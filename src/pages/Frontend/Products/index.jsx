@@ -23,7 +23,7 @@ const Products = () => {
 
     const fetchProducts = async () => {
         try {
-            const res = await axios.get("http://localhost:8000/api/products");
+            const res = await axios.get("https://resto-be.vercel.app/api/products");
             const data = res.data.products || [];
             setProducts(data);
             setFilteredProducts(data);
@@ -70,7 +70,7 @@ const Products = () => {
                 shippingAddress
             };
 
-            const response = await axios.post("http://localhost:8000/api/orders/create", orderPayload, {
+            const response = await axios.post("https://resto-be.vercel.app/api/orders/create", orderPayload, {
                 headers: { Authorization: `Bearer ${token}` }
             });
 

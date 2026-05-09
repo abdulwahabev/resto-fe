@@ -44,7 +44,7 @@ const Add = () => {
 
             const token = localStorage.getItem("jwt");
 
-            const res = await axios.post("http://localhost:8000/api/products/create", formData, { headers: { Authorization: `Bearer ${token}` } });
+            const res = await axios.post("https://resto-be.vercel.app/api/products/create", formData, { headers: { Authorization: `Bearer ${token}` } });
 
             if (res.status === 201) {
                 window.toastify("Product added successfully", "success");

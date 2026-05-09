@@ -22,7 +22,7 @@ const Users = () => {
 
         setIsAppLoading(true);
 
-        axios.get("http://localhost:8000/api/auth/all-users", { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` } })
+        axios.get("https://resto-be.vercel.app/api/auth/all-users", { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` } })
             .then(res => setUsers(res.data.users))
             .catch(err => window.toastify?.(err.response?.data?.message || "Failed to fetch users", "error"))
             .finally(() => setIsAppLoading(false));

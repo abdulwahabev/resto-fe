@@ -31,7 +31,7 @@ const AuthProvider = ({ children }) => {
             return
         }
 
-        axios.get("http://localhost:8000/api/auth/user", { headers: { Authorization: `Bearer ${jwt}` } })
+        axios.get("https://resto-be.vercel.app/api/auth/user", { headers: { Authorization: `Bearer ${jwt}` } })
             .then(res => {
                 const { status, data } = res
                 if (status === 200) {

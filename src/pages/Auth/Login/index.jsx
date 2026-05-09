@@ -28,7 +28,7 @@ const Login = () => {
         setIsProcessing(true);
 
         try {
-            const res = await axios.post("http://localhost:8000/api/auth/login", { email, password });
+            const res = await axios.post("https://resto-be.vercel.app/api/auth/login", { email, password });
             if (res.status === 200) {
                 localStorage.setItem("jwt", res.data.token);
                 window.toastify(res.data.message || "Login successful", "success");

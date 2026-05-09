@@ -34,7 +34,7 @@ const Register = () => {
         setIsProcessing(true);
 
         try {
-            const res = await axios.post("http://localhost:8000/api/auth/register", { name, email, password });
+            const res = await axios.post("https://resto-be.vercel.app/api/auth/register", { name, email, password });
 
             if (res.status === 201) {
                 window.toastify(res.data.message || "Account created!", "success");

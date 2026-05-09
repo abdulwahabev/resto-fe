@@ -24,7 +24,7 @@ const All = () => {
         setLoading(true);
         const token = localStorage.getItem("jwt");
 
-        axios.get("http://localhost:8000/api/products/all", { headers: { Authorization: `Bearer ${token}` } })
+        axios.get("https://resto-be.vercel.app/api/products/all", { headers: { Authorization: `Bearer ${token}` } })
             .then(res => {
                 if (res.status === 200) {
                     setProducts(res.data.products);
