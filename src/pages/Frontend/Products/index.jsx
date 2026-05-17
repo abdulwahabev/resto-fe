@@ -6,6 +6,7 @@ import axios from 'axios';
 
 const { Title, Text, Paragraph } = Typography;
 const { TextArea } = Input;
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -23,7 +24,7 @@ const Products = () => {
 
     const fetchProducts = async () => {
         try {
-            const res = await axios.get("https://resto-be.vercel.app/api/products");
+            const res = await axios.get(`${apiUrl}/products`);
             const data = res.data.products || [];
             setProducts(data);
             setFilteredProducts(data);
@@ -70,7 +71,7 @@ const Products = () => {
                 shippingAddress
             };
 
-            const response = await axios.post("https://resto-be.vercel.app/api/orders/create", orderPayload, {
+            const response = await axios.post(`${apiUrl}/orders/create`, orderPayload, {
                 headers: { Authorization: `Bearer ${token}` }
             });
 

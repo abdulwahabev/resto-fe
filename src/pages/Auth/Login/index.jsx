@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { useAuth } from "@/context/Auth";
+const apiUrl = import.meta.env.VITE_API_URL;
+
 
 const { Title, Text } = Typography;
 
@@ -28,7 +30,7 @@ const Login = () => {
         setIsProcessing(true);
 
         try {
-            const res = await axios.post("https://resto-be.vercel.app/api/auth/login", { email, password });
+            const res = await axios.post(`${apiUrl}/auth/login`, { email, password });
             if (res.status === 200) {
                 localStorage.setItem("jwt", res.data.token);
                 window.toastify(res.data.message || "Login successful", "success");

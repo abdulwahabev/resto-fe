@@ -3,6 +3,7 @@ import { Form, Input, Button, Select, message } from 'antd';
 import { ArrowRightOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const { TextArea } = Input;
 const { Option } = Select;
@@ -44,7 +45,7 @@ const Add = () => {
 
             const token = localStorage.getItem("jwt");
 
-            const res = await axios.post("https://resto-be.vercel.app/api/products/create", formData, { headers: { Authorization: `Bearer ${token}` } });
+            const res = await axios.post(`${apiUrl}/products/create`, formData, { headers: { Authorization: `Bearer ${token}` } });
 
             if (res.status === 201) {
                 window.toastify("Product added successfully", "success");

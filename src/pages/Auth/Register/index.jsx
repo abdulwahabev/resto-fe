@@ -3,6 +3,7 @@ import { Form, Input, Button, Row, Col, Typography, Divider } from "antd";
 import { UserOutlined, MailOutlined, LockOutlined, RocketOutlined } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -34,7 +35,7 @@ const Register = () => {
         setIsProcessing(true);
 
         try {
-            const res = await axios.post("https://resto-be.vercel.app/api/auth/register", { name, email, password });
+            const res = await axios.post(`${apiUrl}/auth/register`, { name, email, password });
 
             if (res.status === 201) {
                 window.toastify(res.data.message || "Account created!", "success");

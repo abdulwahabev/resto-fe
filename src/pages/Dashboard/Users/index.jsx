@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useAuth } from '@/context/Auth';
 
 const { Title } = Typography;
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const Users = () => {
 
@@ -22,7 +23,7 @@ const Users = () => {
 
         setIsAppLoading(true);
 
-        axios.get("https://resto-be.vercel.app/api/auth/all-users", { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` } })
+        axios.get(`${apiUrl}/auth/all-users`, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` } })
             .then(res => setUsers(res.data.users))
             .catch(err => window.toastify?.(err.response?.data?.message || "Failed to fetch users", "error"))
             .finally(() => setIsAppLoading(false));

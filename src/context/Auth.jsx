@@ -2,6 +2,8 @@ import { createContext, useContext, useEffect, useReducer, useState } from "reac
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const AuthContext = createContext()
 
 const initialState = { isAuth: false, user: {} }
@@ -31,7 +33,7 @@ const AuthProvider = ({ children }) => {
             return
         }
 
-        axios.get("https://resto-be.vercel.app/api/auth/user", { headers: { Authorization: `Bearer ${jwt}` } })
+        axios.get(`${apiUrl}/auth/user`, { headers: { Authorization: `Bearer ${jwt}` } })
             .then(res => {
                 const { status, data } = res
                 if (status === 200) {

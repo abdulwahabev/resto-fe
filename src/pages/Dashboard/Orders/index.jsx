@@ -3,6 +3,7 @@ import { Table, Tag, Select, Button, message, Spin, Typography, Space, Popconfir
 import { DeleteOutlined, ReloadOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import { useAuth } from '@/context/Auth';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -21,7 +22,7 @@ const Orders = () => {
         try {
             setIsLoading(true);
             const token = localStorage.getItem("jwt");
-            const res = await axios.get("https://resto-be.vercel.app/api/orders/get-all", {
+            const res = await axios.get(`${apiUrl}/orders/get-all`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setOrders(res.data.orders);
